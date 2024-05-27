@@ -36,7 +36,6 @@ const formatPlaylist = function(playlistId) {
        const playlist = library.playlists[playlistId];
 
        return `${playlist.id}: ${playlist.name} - ${playlist.tracks.length} tracks`;
-
 }
 console.log(formatPlaylist('p02'));
 
@@ -50,7 +49,7 @@ const printPlaylists = function() {
        const playlistValues = Object.values(printPlaylist);
        
        // Iterate the playlistValues elements using for...of method
-       // Use the formatPlaylist() helper function to return
+       // Use the formatPlaylist() helper function to return the result (list)
        for (let element of playlistValues ) {
               result.push(formatPlaylist(element.id))
        }
@@ -64,22 +63,37 @@ console.log(printPlaylists());
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
+
+// Helper Functions
+const formatTrack = function(trackId) {
+
+       const track = library.tracks[trackId];
+
+       return `${track.id}: ${track.name} by ${track.artist} (${track.album})`
+}
+console.log(formatTrack("t03"));
+
 const printTracks = function() {
+
+       const result = [];
+
        // Assign the "library" object "tracks" key to a variable.
        const printTracks = library.tracks;
-       // Obtain the keys by using the Object.key method.
-       const tracksKeys = Object.keys(printTracks);
+       // Obtain the values by using the Object.values method.
+       const tracksValues = Object.values(printTracks);
+       //console.log("Line 84: ", tracksValues)
 
        // Iterate the tracksKeys elements using for...of method
-       for (const key of tracksKeys) {
-              const tracksKeyProp = printTracks[key];
-              console.log(`${tracksKeyProp.id}: ${tracksKeyProp.name} by ${tracksKeyProp.artist} (${tracksKeyProp.album})`)
+       // Use the formatTrack() helper function to return the result (list)
+       for (const element of tracksValues) {
+              result.push(formatTrack(element.id));
        }
+
+       return result.join('\n');
 }
 
-printTracks();
+console.log(printTracks());
 
-/*
 // prints a list of tracks for a given playlist, using the following format:
 // p01: Coding Music - 2 tracks
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
@@ -89,7 +103,7 @@ const printPlaylist = function(playlistId) {
      
 }
 
-
+/*
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
 
