@@ -58,6 +58,7 @@ const printPlaylists = function() {
 }
 
 console.log(printPlaylists());
+console.log("====================");
 
 // prints a list of all tracks, using the following format:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
@@ -93,16 +94,30 @@ const printTracks = function() {
 }
 
 console.log(printTracks());
+console.log("====================");
 
 // prints a list of tracks for a given playlist, using the following format:
 // p01: Coding Music - 2 tracks
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 const printPlaylist = function(playlistId) {
+       const formattedTrack = [];
+       // Variable playlist server as a Value storage of a "library" key as per given playlistId
+       const playlist = library.playlists[playlistId];
+       // To obtain the array value of tracks.
+       const tracks = playlist.tracks;
 
-     
+       // Iterate the tracks elements using for...of method
+       for (let element of tracks) {
+              // Use the formatTrack() helper function to return the formattedTrack (list)
+              formattedTrack.push(formatTrack(element));
+       }
+
+      return `${formatPlaylist(playlistId)}\n${formattedTrack.join('\n')}`
+
 }
-
+console.log(printPlaylist('p02'));
+console.log("====================");
 /*
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
