@@ -31,25 +31,47 @@ const library = {
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
 const printPlaylists = function() {
-
+       // Assign the "library" object "playlist" key to a variable.
+       const printPlaylist = library.playlists;
+       // Obtain the keys by using the Object.key method.
+       const playlistKeys = Object.keys(printPlaylist);
+       
+       // Iterate the playlistKeys elements using for...of method
+       for (let key of playlistKeys) {
+              const playlistsKeyProp = printPlaylist[key];
+              console.log(`${playlistsKeyProp.id}: ${playlistsKeyProp.name} - ${playlistsKeyProp.tracks.length} tracks`);
+       }
 }
 
+printPlaylists();
 
 // prints a list of all tracks, using the following format:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
 const printTracks = function() {
+       // Assign the "library" object "tracks" key to a variable.
+       const printTracks = library.tracks;
+       // Obtain the keys by using the Object.key method.
+       const tracksKeys = Object.keys(printTracks);
 
+       // Iterate the tracksKeys elements using for...of method
+       for (const key of tracksKeys) {
+              const tracksKeyProp = printTracks[key];
+              console.log(`${tracksKeyProp.id}: ${tracksKeyProp.name} by ${tracksKeyProp.artist} (${tracksKeyProp.album})`)
+       }
 }
 
+printTracks();
 
+/*
 // prints a list of tracks for a given playlist, using the following format:
 // p01: Coding Music - 2 tracks
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 const printPlaylist = function(playlistId) {
 
+     
 }
 
 
@@ -86,3 +108,5 @@ const addPlaylist = function(name) {
 const printSearchResults = function(query) {
 
 }
+
+*/
