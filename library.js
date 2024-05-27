@@ -30,20 +30,35 @@ const library = {
 // prints a list of all playlists, in the form:
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
+
+// Helper functions
+const formatPlaylist = function(playlistId) {
+       const playlist = library.playlists[playlistId];
+
+       return `${playlist.id}: ${playlist.name} - ${playlist.tracks.length} tracks`;
+
+}
+console.log(formatPlaylist('p02'));
+
 const printPlaylists = function() {
+
+       const result = [];
+
        // Assign the "library" object "playlist" key to a variable.
        const printPlaylist = library.playlists;
-       // Obtain the keys by using the Object.key method.
-       const playlistKeys = Object.keys(printPlaylist);
+       // Obtain the values by using the Object.values method.
+       const playlistValues = Object.values(printPlaylist);
        
-       // Iterate the playlistKeys elements using for...of method
-       for (let key of playlistKeys) {
-              const playlistsKeyProp = printPlaylist[key];
-              console.log(`${playlistsKeyProp.id}: ${playlistsKeyProp.name} - ${playlistsKeyProp.tracks.length} tracks`);
+       // Iterate the playlistValues elements using for...of method
+       // Use the formatPlaylist() helper function to return
+       for (let element of playlistValues ) {
+              result.push(formatPlaylist(element.id))
        }
+
+       return result.join('\n');
 }
 
-printPlaylists();
+console.log(printPlaylists());
 
 // prints a list of all tracks, using the following format:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
