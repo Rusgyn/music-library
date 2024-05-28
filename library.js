@@ -122,7 +122,7 @@ console.log("====================");
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
        const playlist = library.playlists[playlistId];
-       // Adding the track to the existing playlist.
+       // Adding the track to the existing playlist using push method.
        playlist.tracks.push(trackId)
        // Show the updated playlist.
        return `${printPlaylist(playlistId)}`;
@@ -130,7 +130,8 @@ const addTrackToPlaylist = function(trackId, playlistId) {
 
 console.log(addTrackToPlaylist("t01", "p02"))
 console.log("====================");
-/*
+
+
 // generates a unique id
 // (already implemented: use this for addTrack and addPlaylist)
 const generateUid = function() {
@@ -140,9 +141,22 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
-
+       // Assigning the random id generated from generateUid() to variable is.
+       let id = generateUid();
+       const track = library.tracks;
+       // Adding the new track to the library.
+       track[id] = { //track[id], using [] as we are referring to the content of variable id.
+              id: id,
+              name: name,
+              artist: artist,
+              album: album
+       }
+       // Print the tracks list in the library.
+       return `${printTracks()}`;
 }
 
+console.log(addTrack("The Piano", "Gabby Kaye", "The Piano and Me"));
+/*
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
