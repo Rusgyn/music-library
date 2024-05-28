@@ -156,14 +156,27 @@ const addTrack = function(name, artist, album) {
 }
 
 console.log(addTrack("The Piano", "Gabby Kaye", "The Piano and Me"));
-/*
+
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
+       // Assigning the random id generated from generateUid() to variable is.
+       let id = generateUid();
 
+       const playlist = library.playlists;
+       // Adding the new playlist to the library.
+       playlist[id] = {
+              id: id,
+              name: name,
+              tracks: [],
+       }
+       // Print the playlists list in the library.
+       return `${printPlaylists()}`;
 }
 
-
+console.log(addPlaylist("Relaxing Piano"))
+console.log("====================");
+/*
 // STRETCH:
 // given a query string string, prints a list of tracks
 // where the name, artist or album contains the query string (case insensitive)
